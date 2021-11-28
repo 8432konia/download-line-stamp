@@ -3,22 +3,23 @@ Save the line stamp locally, because you want to use it in slack. \
 Then, do a bulk insert. \
 [Here is the extension](https://chrome.google.com/webstore/detail/neutral-face-emoji-tools/anchoacphlfbdomdlomnbbfhcmcdmjej)
 
-## environment
+## Environment
 Here is environment that has been confirmed to be used.
 ```
 npm v7.6.3
 node v14.6.0
 ```
 
-## procedure
+## Procedure
 ```
-# install packages
+# Install packages
 npm i
 
-# setting link
+# Setting link
+# Add a new line and a link
 vi url.csv
 
-# run
+# Run
 npm run start
 ```
 
