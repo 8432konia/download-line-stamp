@@ -17,6 +17,7 @@ npm i
 
 # Setting link
 # Add a new line and a link
+# not EOL
 vi url.csv
 
 # Run

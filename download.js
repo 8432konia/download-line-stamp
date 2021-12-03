@@ -13,8 +13,7 @@ const browserParams = {
 
 const getStamps = async(urls) => {
   const imageUrls = []
-  for(let i = 0; i < urls.length; i++) {
-    const url = urls[i];
+  for(const url of urls) {
     const browser = await puppeteer.launch(browserParams);
     const page = await browser.newPage();
     await page.goto(url, {waitUntil: 'domcontentloaded'});
@@ -68,13 +67,15 @@ const sleep = async (ms) => {
   const csv = fs.readFileSync('url.csv', 'utf8');
   var urls = csv.toString().split(/\r\n|\n|\r/g);
   const stamps = await getStamps(urls);
-  for(let i = 1;i <= stamps.length;i++) {
+  const stampNum = stamps.length;
+  const imageNum = stamps[0].length;
+  for(let i = 1;i <= stampNum;i++) {
     const images = stamps[i - 1];
     var dir = `./images/${toDoubleDigits(i)}`;
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir, 0755);
     }
-    for(let j = 1;j <= images.length;j++) {
+    for(let j = 1;j <= imageNum;j++) {
       const image = images[j - 1];
       await uploadImageToGCS(image, i, j);
       await sleep(1000);
